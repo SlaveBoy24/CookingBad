@@ -48,8 +48,7 @@ public class TimeSystem : MonoBehaviour
                     }
                     else
                     {
-                        _hour = 0;
-                        _day++;
+                        NewDay(0);
                     }
                 }
             }
@@ -67,5 +66,16 @@ public class TimeSystem : MonoBehaviour
             _calendar.text = "Day - " + _day;
             yield return null;
         }
+    }
+
+    public void NewDay(int hour)
+    {
+        _hour = hour;
+        _day++;
+    }
+
+    public void GetHour()
+    { 
+        
     }
 }

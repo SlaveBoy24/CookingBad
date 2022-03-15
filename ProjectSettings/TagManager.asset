@@ -11,6 +11,7 @@ TagManager:
   - ST2
   - ST3
   - ST4
+  - Partner
   layers:
   - Default
   - TransparentFX

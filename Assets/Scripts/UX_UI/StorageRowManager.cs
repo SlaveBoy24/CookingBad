@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class StorageRowManager : MonoBehaviour
 {
     [SerializeField] private GameObject _rowAssets;
-    [SerializeField] private Text _amount;
+    [SerializeField] private Text _amount;   
 
     public void UpdateData(float amount)
     {
