@@ -117,7 +117,7 @@ public class Cooking : MonoBehaviour
         while (_characterMove.MoveTo(_productStorage.gameObject))
             yield return null;
 
-        _productStorage.AddProduct(_purityCalculator.GetPurity(), 50); // занос товара на склад
+        _productStorage.AddProduct(_purityCalculator.GetPurity(), "Meth", 50); // занос товара на склад
         Debug.Log("Я СВАРИЛ НАХУЙ");
 
         _workProcess = false;

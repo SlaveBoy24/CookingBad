@@ -69,6 +69,7 @@
     <Compile Include="Assets\Scripts\Main Mechanics\Timer.cs" />
     <Compile Include="Assets\Scripts\Character\Idle.cs" />
     <Compile Include="Assets\Scripts\Main Mechanics\SellProduct.cs" />
+    <Compile Include="Assets\Scripts\Main Mechanics\Product.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

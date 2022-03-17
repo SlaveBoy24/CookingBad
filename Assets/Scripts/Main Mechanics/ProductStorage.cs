@@ -3,11 +3,16 @@ using UnityEngine;
 
 public class ProductStorage : MonoBehaviour
 {
-    [SerializeField] private List<float> _product;
+    [SerializeField] private List<Product> _products;
 
-    public void AddProduct(float purity, float amount)
+    private void Start()
     {
-        if (purity >= 75 && purity <= 100)
+        /*_products = new List<Product>();*/
+    }
+
+    public void AddProduct(float purity, string type, float amount)
+    {
+        /*if (purity >= 75 && purity <= 100)
         {
             _product[0] += amount;
         }
@@ -22,11 +27,19 @@ public class ProductStorage : MonoBehaviour
         else if (purity >= 0 && purity <= 24)
         {
             _product[3] += amount;
+        }*/
+
+        switch (type)
+        {
+            case "Meth": _products[(int)purity / 25].SetAmount(amount); break;
+            /*case "Ger": _products[(int)purity / 25 + 4].SetAmount(amount); break;
+            case "Weed": _products[(int)purity / 25 + 8].SetAmount(amount); break;
+            case "LSD": _products[(int)purity / 25 + 12].SetAmount(amount); break;*/
         }
     }
 
-    public List<float> GetProduct()
+    public List<Product> GetProduct()
     {
-        return _product;
+        return _products;
     }
 }
