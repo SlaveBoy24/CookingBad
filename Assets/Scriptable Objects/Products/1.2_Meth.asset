@@ -15,4 +15,4 @@ MonoBehaviour:
   _type: Meth_Good
   _sprite: {fileID: 0}
   _purity: 50
-  _amount: 0
+  _amount: 11

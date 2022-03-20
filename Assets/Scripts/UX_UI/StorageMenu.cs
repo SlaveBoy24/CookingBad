@@ -1,16 +1,22 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class StorageMenu : MonoBehaviour
 {
     [SerializeField] private GameObject _rowPrefab;
     [SerializeField] private ProductStorage _storage;
     [SerializeField] private Transform _menuStorageUI; //parent to row child
+    [SerializeField] private GameObject _storageUI;
+
+    [SerializeField] private SellProduct _partner;
+
     private List<GameObject> _rows = new List<GameObject>();
 
     private void Start()
     {
         _storage = this.GetComponent<ProductStorage>();
+        _partner = GameObject.FindGameObjectWithTag("Partner").GetComponent<SellProduct>();
     }
 
     public void UpdateInfo()
@@ -22,33 +28,29 @@ public class StorageMenu : MonoBehaviour
         List<Product> products = _storage.GetProduct();
         Vector3 rowPosition = _menuStorageUI.transform.position;
         rowPosition.y = 160;
-        for (int i = 0; i < products.Count; i++)
+        for (int i = products.Count-1; i >= 0; i--)
             if (products[i].GetAmount() > 0)
             {
-                GameObject row = _rowPrefab;
-                products[i].UpdateRowUI(ref row);
-                GameObject rowChild = Instantiate(row);
+                products[i].UpdateRowUI(ref _rowPrefab);
+                GameObject rowChild = Instantiate(_rowPrefab);
                 rowChild.transform.SetParent(_menuStorageUI);
                 rowChild.transform.localPosition = rowPosition;
                 rowChild.transform.localScale = Vector3.one;
                 rowPosition.y -= 140;
 
-                _rows.Add(rowChild);
+                Product product = products[i];
+
+                rowChild.transform.GetChild(0).GetChild(3).GetComponent<Button>().onClick.AddListener(() => SendProduct(product));
             }
     }
 
-    [SerializeField] private GameObject _storageUI;
-    /*s[SerializeField] private List<StorageRowManager> _rows;
-    [SerializeField] private SellProduct _partner;
-
-    private void Start()
+    public void SendProduct(Product product)
     {
-        _partner = GameObject.FindGameObjectWithTag("Partner").GetComponent<SellProduct>();
-    }*/
+        _partner.GetProduct(product);
+    }
 
     private void OnMouseDown()
     {
-        UpdateInfo();
         OpenStorage();
     }
 
@@ -56,12 +58,7 @@ public class StorageMenu : MonoBehaviour
     {
         Time.timeScale = 0f;
 
-        /*List<float> products = this.GetComponent<ProductStorage>().GetProduct();
-
-        for (int i = 0; i < products.Count; i++)
-        {
-            _rows[i].UpdateData(products[i]);
-        }*/
+        UpdateInfo();
 
         _storageUI.SetActive(true);
     }
@@ -72,11 +69,4 @@ public class StorageMenu : MonoBehaviour
 
         _storageUI.SetActive(false);
     }
-/*
-    public void SendProduct(int index)
-    {
-        List<float> products = this.GetComponent<ProductStorage>().GetProduct();
-
-        _partner.GetInfo(products[index], index);
-    }*/
 }

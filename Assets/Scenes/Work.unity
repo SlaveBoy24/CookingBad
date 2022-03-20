@@ -1323,7 +1323,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 904336892}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2535,8 +2535,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1903885338}
   - {fileID: 455992613}
+  - {fileID: 1903885338}
   - {fileID: 1025790484}
   m_Father: {fileID: 1292733755}
   m_RootOrder: 0
@@ -3511,6 +3511,7 @@ MonoBehaviour:
   _storage: {fileID: 0}
   _menuStorageUI: {fileID: 2038327351}
   _storageUI: {fileID: 1304706061}
+  _partner: {fileID: 0}
 --- !u!61 &1079674437
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5750,10 +5751,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _partnerUI: {fileID: 1574654932}
   _btnGetMoney: {fileID: 858202403}
-  _rowAssets: {fileID: 904336891}
-  _image: {fileID: 1903885339}
-  _title: {fileID: 455992614}
-  _amount: {fileID: 1025790485}
+  _rowAssets: {fileID: 1292733754}
+  _sellingProcess: 0
 --- !u!1 &1556718429
 GameObject:
   m_ObjectHideFlags: 0
@@ -6032,9 +6031,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1079674436}
-        m_TargetAssemblyTypeName: StorageMenu, Assembly-CSharp
-        m_MethodName: CloseStorage
+      - m_Target: {fileID: 1517271549}
+        m_TargetAssemblyTypeName: SellProduct, Assembly-CSharp
+        m_MethodName: CloseUI
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7059,7 +7058,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 904336892}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

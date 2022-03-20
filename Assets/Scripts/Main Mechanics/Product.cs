@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -26,5 +24,10 @@ public class Product : ScriptableObject
         row.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = _type;
         row.transform.GetChild(0).GetChild(1).GetComponent<Image>().sprite = _sprite;
         row.transform.GetChild(0).GetChild(2).GetComponent<Text>().text = "Amount: " + _amount;
+    }
+
+    public string GetName() 
+    {
+        return _type;
     }
 }
