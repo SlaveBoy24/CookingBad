@@ -6,7 +6,7 @@ public class Skills : MonoBehaviour
 
     public float GetSkill()
     {
-        switch (_skill / 25)
+        switch (Mathf.Round(_skill / 25))
         {
             case 1: return Random.Range(30, 35);
             case 2: return Random.Range(20, 25);

@@ -1,6 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Idle : MonoBehaviour
 {
@@ -10,16 +10,18 @@ public class Idle : MonoBehaviour
 
     private void Start()
     {
-        _characterMove = this.GetComponent<Moving>();
-
-        Transform stationsParent = GameObject.FindGameObjectWithTag("station").transform;
-        _stations = new GameObject[stationsParent.childCount];
-
-        for (int i = 0; i < stationsParent.childCount; i++)
+        if (SceneManager.GetActiveScene().name == "Work")
         {
-            _stations[i] = stationsParent.GetChild(i).gameObject;
-        }
+            _characterMove = this.GetComponent<Moving>();
 
+            Transform stationsParent = GameObject.FindGameObjectWithTag("station").transform;
+            _stations = new GameObject[stationsParent.childCount];
+
+            for (int i = 0; i < stationsParent.childCount; i++)
+            {
+                _stations[i] = stationsParent.GetChild(i).gameObject;
+            }
+        }
     }
 
     public void StartIdle(string condition)

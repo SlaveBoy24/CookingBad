@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -15,7 +14,7 @@ public class Behavior : MonoBehaviour
         {
             _workProcess = GameObject.FindGameObjectWithTag("GameManager").GetComponent<Cooking>();
             _cleanProcess = GameObject.FindGameObjectWithTag("GameManager").GetComponent<CleanStation>();
-            _characterIdle = this.GetComponent<Idle>();
+            _characterIdle = GetComponent<Idle>();
             
             SetCondition("Idle");
         }
@@ -49,5 +48,10 @@ public class Behavior : MonoBehaviour
         {
             _condition = condition;
         }
+    }
+
+    public string GetCondition()
+    {
+        return _condition;
     }
 }

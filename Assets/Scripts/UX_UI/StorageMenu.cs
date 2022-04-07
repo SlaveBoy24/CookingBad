@@ -22,8 +22,12 @@ public class StorageMenu : MonoBehaviour
     public void UpdateInfo()
     {
         if (_rows.Count != 0)
+        {
             foreach (var row in _rows)
                 Destroy(row);
+
+            _rows = new List<GameObject>();
+        }
 
         List<Product> products = _storage.GetProduct();
         Vector3 rowPosition = _menuStorageUI.transform.position;
@@ -38,15 +42,23 @@ public class StorageMenu : MonoBehaviour
                 rowChild.transform.localScale = Vector3.one;
                 rowPosition.y -= 140;
 
+                _rows.Add(rowChild); 
+
                 Product product = products[i];
 
-                rowChild.transform.GetChild(0).GetChild(3).GetComponent<Button>().onClick.AddListener(() => SendProduct(product));
+                rowChild.transform.GetChild(0).GetChild(3).GetComponent<Button>().onClick.AddListener(() => Drop(product)) ;
             }
     }
 
-    public void SendProduct(Product product)
+    //public void SendProduct(Product product)
+    //{
+    //    _partner.GetProduct(product);
+    //}
+
+    public void Drop(Product product)
     {
-        _partner.GetProduct(product);
+        product.DropAmount();
+        UpdateInfo();
     }
 
     private void OnMouseDown()
